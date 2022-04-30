@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    
+</head>
+<style>
+    #links {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1%;
+  box-shadow: 2px 2px 5px 5px rgb(235, 235, 235);
+  background-color: rgb(26, 238, 188);
+}
+
+#links > div {
+  display: flex;
+  list-style: none;
+}
+#links a {
+  text-decoration: none;
+  color: white;
+  font-size: 30px;
+} 
+#submit {
+  width: 70%;
+  margin: auto;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 15px;
+}
+/* Navbar related css */
+
+/* Form related css */
+
+input,
+select {
+  display: block;
+  margin: 15px 0px;
+  font-size: 20px;
+  padding: 2%;
+}
+option {
+  font-size: 25px;
+}
+form {
+  width: 30%;
+  border: 1px solid rgb(230, 230, 230);
+  margin: 3% auto;
+  padding: 3%;
+  background: white;
+}
+h1{
+    text-align: center;
+    font-size: 50px;
+}
+</style>
+<body>
+    <div id="links">
+        <div><a href="SignUp.html" >SignUp</a></div>
+        <div><a href="login.html">Login</a></div>
+    </div>
+    <h1>Masai</h1>
+    <form id="form">
+        <h1>Sign Up</h1>
+        <label>Full Name</label>
+        <input id="name" type="text"  placeholder="Enter Full Name"/><br>
+        <label>Email</label>
+        <input id="email" type="text" placeholder="Enter email id"/><br>
+        <label>Password</label>
+        <input id="Password" type="password" placeholder="Password"/><br>
+        <input  type="submit"/>
+        
+    </form>
+</body>
+</html>
+<script>
+    document.querySelector("#form").addEventListener("submit",addsubmit);
+    var inputarr=JSON.parse(localStorage.getItem("inputData"))||[];
+    
+    //console.log(inputarr)
+   //var inputarr=localStorage.getItem("inputData")
+    //console.log(inputarr)
+    //localStorage
+    function addsubmit(){
+        event.preventDefault();
+        var inputObj={
+            name:form.name.value,
+            email:form.email.value,
+            password:form.Password.value
+        };
+       // console.log(inputobj)
+        inputarr.push(inputObj);
+        console.log(inputarr);
+        localStorage.setItem("inputData",JSON.stringify(inputarr));
+        //window.location.href="login.html"
+        alert("Sucessfully signup")
+        window.location.href="login.html"
+    }
+</script>

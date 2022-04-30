@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+</head>
+<style>
+    form {
+  width: 30%;
+  border: 1px solid rgb(230, 230, 230);
+  margin: 3% auto;
+  padding: 3%;
+  background: white;
+}
+h1{
+    text-align: center;
+    font-size: 50px;
+}
+input,
+select {
+  display: block;
+  margin: 15px 0px;
+  font-size: 20px;
+  padding: 2%;
+}
+</style>
+<body>
+    <h1>login</h1>
+    
+    <form id="form">
+        
+        <label>Email</label>
+        <input id="email" type="text"  placeholder="Enter Email"/><br>
+       
+       
+        <label>Password</label>
+        <input id="Password" type="password" placeholder="Password"/><br>
+        <input  id="submit" type="submit"/>
+        
+    </form>
+</body>
+</html>
+<script>
+    var signuparr=JSON.parse(localStorage.getItem("inputData"))||[];
+   // console.log(signuparr)
+   var loginarr=[];
+   
+   
+    
+    document.querySelector("#submit").addEventListener("click", function(){
+        loginbuttonfun()
+    })
+    function loginbuttonfun(){
+        event.preventDefault();
+        var loginObj={
+            emailLogin:form.email.value,
+            passwordLogin:form.Password.value
+        }
+        loginarr.push(loginObj);
+        //localStorage.setItem("loginData",JSON.stringify(loginarr))
+       // console.log(loginarr)
+        var checkemail="";
+        var checkpass="";
+        loginarr.forEach(function(ele){
+            checkemail=ele.emailLogin;
+            checkpass =ele.passwordLogin;
+        })
+        var arr=signuparr.map(function(e){
+        return e.email;
+    });
+    console.log(arr)
+    var arrpass=signuparr.map(function(e){
+        return e.password;
+    });
+    
+    console.log(arrpass);
+    var count=false;
+    for(var i=0;i<arr.length;i++){
+       if(arr[i]==checkemail && arrpass[i]==checkpass){  
+        count=true;
+       }
+    }
+    if(count==true){
+        alert("login sucessfully")
+        //window.location.href="navbar.html"
+        window.location.href="navbar.htm"
+        //window.location.href="login.html"
+    }
+    else{
+        
+        alert("Wrong creantial")
+        window.location.href="signup.html"
+    }
+    
+    
+  
+        
+    }
+</script>
